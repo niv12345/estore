@@ -1,0 +1,39 @@
+<div class="w-full shadow-lg shadow-gray-500/50 bg-gray-900">
+    <div class="flex items-center">
+        <div class="text-white ml-2 p-3 w-[23%]">
+            <h1 class="text-xl font-bold">eStore</h1>
+        </div>
+        <div class="w-full md:w-[50%] flex item-center justify-center h-[2.5rem]">
+        @if(displaySearch()){
+        <div class="p-0 w-full h-[2.5rem] bg-white flex item-center rounded-lg">
+            <select #selectedCategory
+            class="w-auto bg-gray-300 h-full border-none font-semibold px-2 pr-5 rounded-lg" >
+                @for(category of  categoryStore.topLevelCategories(); track category.id){
+                <option [value]="category.id">{{category.category}}</option>
+                }
+            </select>
+            <input #keyword
+            type="text" class="w-[90%] h-full inline-block border-none outline-none px-3" placeholder="Search....">
+            <button (click)="onSearch(selectedCategory.value,keyword.value)" type="button" class="w-[10%] h-10 bg-gray-300 border-none rounded-lg flex justify-center items-center">
+                <fa-icon [icon]="faSearch" class="text-gray-600"></fa-icon>
+            </button>
+        </div>
+    }
+    </div>
+        <div class="flex items-center w-[27%] gap-6 justify-end h-full">
+         <div class="flex items-center gap-2 text-white">
+          <fa-icon [icon]="faUserCircle"></fa-icon>
+          <h5>
+            <a href="/login" class="text-white no-underline hover:underline">Sign in</a>
+          </h5>
+          /
+          <h5>
+            <a href="/login" class="text-white no-underline hover:underline">Register</a>
+          </h5>
+         </div>
+         <div class="flex items-center gap-4 text-white text-[1.3rem]">
+            <fa-icon [icon]="faShoppingCart" ></fa-icon>            
+         </div>
+       </div>
+    </div>
+</div>
